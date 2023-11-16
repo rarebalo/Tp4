@@ -12,24 +12,26 @@ El auto se apagó
 */
 
 const auto = {
-    color: 'rojo',
-    marca: 'ferrari',
-    modelo: '74',
-    encendido: false,
-    
-    arrancar: function(){
-        this.encendido = !this.encendido;
-        if (this.encendido) {
-            document.write("Tu nave acaba de despertar y en 5 minutos (después de calentar) estará lista para devorar el asfalto. <br>");
-        }
-        else{
-            document.write("Tu nave se ha ido a descansar. <br>");
-        }
-    }
-}
+  color: "rojo",
+  marca: "ferrari",
+  modelo: "74",
+  encendido: false,
+
+  encender: function () {
+    this.encendido = true;
+
+    document.write(
+      "Tu nave acaba de despertar y en 5 minutos (después de calentar) estará lista para devorar el asfalto. (auto encendido) <br>"
+    );
+  },
+  apadar: function () {
+    this.encendido = false;
+    document.write("Tu nave se ha ido a descansar. (el auto se apagó) <br>");
+  },
+};
 
 document.write(`${auto.encendido}<br>`);
 
-auto.arrancar();
+auto.encender();
 
 document.write(auto.encendido);
