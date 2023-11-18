@@ -14,9 +14,9 @@ class Producto {
     }
 
     imprimeDatos(){
-        document.write(`${this.codigo}<br>`);
-        document.write(`${this.nombre}<br>`);
-        document.write(`${this.precio}<br>`);
+        document.write(`codigo: ${this.codigo}<br>`);
+        document.write(`nombre: ${this.nombre}<br>`);
+        document.write(`precio: ${this.precio}<br>`);
     }
 
 }
@@ -30,5 +30,6 @@ const catalogo = [pan,fosforos,encendedor];
 for (let index = 0; index < catalogo.length; index++) {
     
     catalogo[index].imprimeDatos();
+    document.write(`<br>`);
     
 }
