@@ -28,7 +28,20 @@ class Agenda {
   }
 
   set anadirContacto(contacto) {
-    this.contactos.push(contacto);
+    if (this._cantidadDeContactos > this.cantidadDeContactos) {
+      this.contactos.push(contacto);
+      alert(
+        `"${
+          this.contactos[this.contactos.length - 1][0]
+        }" fue añadido a tu agenda con exito!`
+      );
+    } else {
+      alert(
+        `Su agenda esta llena no se pudo agregar a ${
+          this.contactos[this.contactos.length - 1][0]
+        }`
+      );
+    }
   }
   set cantidadDeContactos(cantidad) {
     this._cantidadDeContactos = cantidad;
@@ -46,7 +59,7 @@ class Agenda {
     for (let index = 0; index < this.contactos.length; index++) {
       if (this.contactos[index][0] == consulta) {
         estadoConsulta.push(
-          `El contacto "${consulta}" ya se encuentra agendado en la posicion n° ${
+          `El contacto "${consulta}" existe en la posicion n° ${
             index + 1
           }.`
         );
@@ -73,7 +86,12 @@ class Agenda {
         this.contactos[index][1] +
         "\n";
     }
-    alert(listaDeContactos);
+    if (listaDeContactos === "") {
+      alert(`Actualmente tu agenda no tiene ningun contacto.`);
+    }else{
+      alert(listaDeContactos);
+    }
+    
   }
   buscarContacto(nombre) {
     let mensaje = "";
@@ -90,6 +108,44 @@ class Agenda {
       return mensaje;
     }
   }
+  eliminarContacto(contacto) {
+    let mensaje = "";
+    for (let index = 0; index < this.contactos.length; index++) {
+      if (this.contactos[index][0] === contacto) {
+        mensaje = `El contacto "${contacto}" fue eliminado de tu agenda.`;
+        this.contactos.splice(index, 1);
+        break;
+      }
+    }
+    if (mensaje !== "") {
+      return mensaje;
+    } else {
+      mensaje = `El contacto "${contacto}" no existe en tu agenda.`;
+      return mensaje;
+    }
+  }
+  agendaLlena() {
+    let mensaje = "";
+    if (this._cantidadDeContactos > this.cantidadDeContactos) {
+      mensaje = `Su agenda aun tiene ${
+        this._cantidadDeContactos - this.cantidadDeContactos
+      } lugares disponibles.`;
+    } else {
+      mensaje = `Su agenda esta llena.`;
+    }
+    return mensaje;
+  }
+  huecosLibres() {
+    let mensaje = "";
+    if (this._cantidadDeContactos > this.cantidadDeContactos) {
+      mensaje = `Su agenda aun tiene ${
+        this._cantidadDeContactos - this.cantidadDeContactos
+      } huecos disponibles.`;
+    } else {
+      mensaje = `Su agenda esta llena.`;
+    }
+    return mensaje;
+  }
 }
 
 function unNumeroDeTelefono() {
@@ -98,11 +154,64 @@ function unNumeroDeTelefono() {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function unNombreApellido() {
+  const min = 0;
+  const max = 29;
+  return nombresApellidos[Math.floor(Math.random() * (max - min + 1) + min)];
+}
+
+function deseasContinuar() {
+  continuar = prompt(
+    `Desear realizar otra operacion? \n Si deseas realizar otra operacion teclea "si". \n Si no deseas continuar teclea "no". `
+  ).toLowerCase();
+  if (continuar === "si") {
+    terminar = false;
+  } else {
+    terminar = true;
+  }
+}
+let nombresApellidos = [
+  "Roberto García",
+  "Carlos Fernández",
+  "Florencia Martínez",
+  "Juan Pérez",
+  "María Rodríguez",
+  "Pedro Gómez",
+  "Lucía González",
+  "Sofía Ramírez",
+  "Mateo Torres",
+  "Camila Vargas",
+  "Diego Castro",
+  "Valentina Ríos",
+  "Santiago Morales",
+  "Isabella Guzmán",
+  "Sebastián Peña",
+  "Mía Alvarado",
+  "Alejandro Romero",
+  "Emma Cordero",
+  "Samuel Vásquez",
+  "Victoria Mendoza",
+  "Benjamín Ruiz",
+  "Martina Herrera",
+  "Leonardo Guerra",
+  "Ana Méndez",
+  "Luis Aguilar",
+  "Elena Cervantes",
+  "Tomás Paredes",
+  "Julia Duarte",
+  "Felipe Solís",
+  "Adriana Navarro",
+];
+
 let agendaRoberto = new Agenda();
 
-agendaRoberto.anadirContacto = ["Roberto Vicente", unNumeroDeTelefono()];
+/*agendaRoberto.anadirContacto = ["Roberto Vicente", unNumeroDeTelefono()];
 agendaRoberto.anadirContacto = ["Carlos Leonardo", unNumeroDeTelefono()];
 agendaRoberto.anadirContacto = ["Florencia Ines", unNumeroDeTelefono()];
+
+for (let index = 0; index < 10; index++) {
+  agendaRoberto.anadirContacto = [unNombreApellido(), unNumeroDeTelefono()];
+}
 
 alert(agendaRoberto.cantidadDeContactos);
 agendaRoberto.listarContactos();
@@ -110,3 +219,67 @@ alert(agendaRoberto.existeContacto("Roberto Vicente"));
 alert(agendaRoberto.existeContacto("Juanito"));
 alert(agendaRoberto.buscarContacto("Juanito"));
 alert(agendaRoberto.buscarContacto("Carlos Leonardo"));
+alert(agendaRoberto.eliminarContacto(unNombreApellido()));
+alert(agendaRoberto.eliminarContacto(unNombreApellido()));
+alert(agendaRoberto.agendaLlena());
+agendaRoberto.listarContactos();*/
+let terminar = false;
+let opciones = 0;
+let numeroUsuario = 0;
+let nombreUsuario = "";
+do {
+  opciones = parseInt(
+    prompt(
+      `Selecciona el numero que corresponde a la operacion que deseas realizar: \n 
+      1: Añade un contacto a la agenda. \n
+      2: Verificar si existe un contacto. \n
+      3: Lista de toda la agenda. \n
+      4: Buscar un contacto por su nombre. \n
+      5: Elimina un contacto de tu agenda. \n
+      6: Consulta si la agenda esta llena. \n
+      7: Consulta cuantos lugares quedan en tu agenda.`
+    )
+  );
+  switch (opciones) {
+    case 1:
+      nombreUsuario = prompt("Ingresa el nombre de tu contacto: ");
+      numeroUsuario = parseInt(
+        prompt(`Ingresa el numero de telefono de ${nombreUsuario}`)
+      );
+      agendaRoberto.anadirContacto = [nombreUsuario, numeroUsuario];
+      deseasContinuar();
+      break;
+    case 2:
+      nombreUsuario = prompt(
+        `Ingresa el nombre del contacto que deseas buscar.`
+      );
+      alert(agendaRoberto.existeContacto(nombreUsuario));
+      deseasContinuar();
+      break;
+    case 3:
+      agendaRoberto.listarContactos();
+      deseasContinuar();
+      break;
+    case 4:
+      nombreUsuario = prompt("Ingresa el nombre del contacto que deseas buscar");
+      alert(agendaRoberto.buscarContacto(nombreUsuario));
+      deseasContinuar();
+      break;
+    case 5:
+      nombreUsuario = prompt("Ingresa el nombre del contacto que deseas eliminar");
+      alert(agendaRoberto.eliminarContacto(nombreUsuario));
+      deseasContinuar();
+      break;
+    case 6:
+      alert(agendaRoberto.agendaLlena());
+      deseasContinuar();
+      break;
+    case 7:
+      alert(agendaRoberto.huecosLibres());
+      deseasContinuar();
+      break;
+    default:
+      alert(`La opción que ingresaste no es correcta. Asegúrate de ingresar solamente un número entre el 1 y el 7.`);
+      break;
+  }
+} while (!terminar);
