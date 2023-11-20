@@ -76,13 +76,19 @@ class Agenda {
     alert(listaDeContactos);
   }
   buscarContacto(nombre) {
-    let mensaje;
-    if (this.existeContacto(nombre).length > 0) {
-      mensaje = this.contactos[this.existeContacto(nombre)[1]];
-    } else {
-      mensaje = `El contacto "${nombre}" que buscas no existe en tu agenda.`  
+    let mensaje = "";
+    for (let index = 0; index < this.contactos.length; index++) {
+      if (this.contactos[index][0] === nombre) {
+        mensaje = `El numero telefonico de "${nombre}" es: ${this.contactos[index][1]}`;
+        break;
+      }
     }
-    return mensaje;
+    if (mensaje !== "") {
+      return mensaje;
+    } else {
+      mensaje = `El contacto "${nombre}" no existe en su agenda.`;
+      return mensaje;
+    }
   }
 }
 
