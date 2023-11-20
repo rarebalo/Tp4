@@ -59,9 +59,7 @@ class Agenda {
     for (let index = 0; index < this.contactos.length; index++) {
       if (this.contactos[index][0] == consulta) {
         estadoConsulta.push(
-          `El contacto "${consulta}" existe en la posicion n° ${
-            index + 1
-          }.`
+          `El contacto "${consulta}" existe en la posicion n° ${index + 1}.`
         );
         estadoConsulta.push(index);
         repetido = true;
@@ -88,10 +86,9 @@ class Agenda {
     }
     if (listaDeContactos === "") {
       alert(`Actualmente tu agenda no tiene ningun contacto.`);
-    }else{
+    } else {
       alert(listaDeContactos);
     }
-    
   }
   buscarContacto(nombre) {
     let mensaje = "";
@@ -204,25 +201,6 @@ let nombresApellidos = [
 ];
 
 let agendaRoberto = new Agenda();
-
-/*agendaRoberto.anadirContacto = ["Roberto Vicente", unNumeroDeTelefono()];
-agendaRoberto.anadirContacto = ["Carlos Leonardo", unNumeroDeTelefono()];
-agendaRoberto.anadirContacto = ["Florencia Ines", unNumeroDeTelefono()];
-
-for (let index = 0; index < 10; index++) {
-  agendaRoberto.anadirContacto = [unNombreApellido(), unNumeroDeTelefono()];
-}
-
-alert(agendaRoberto.cantidadDeContactos);
-agendaRoberto.listarContactos();
-alert(agendaRoberto.existeContacto("Roberto Vicente"));
-alert(agendaRoberto.existeContacto("Juanito"));
-alert(agendaRoberto.buscarContacto("Juanito"));
-alert(agendaRoberto.buscarContacto("Carlos Leonardo"));
-alert(agendaRoberto.eliminarContacto(unNombreApellido()));
-alert(agendaRoberto.eliminarContacto(unNombreApellido()));
-alert(agendaRoberto.agendaLlena());
-agendaRoberto.listarContactos();*/
 let terminar = false;
 let opciones = 0;
 let numeroUsuario = 0;
@@ -261,12 +239,16 @@ do {
       deseasContinuar();
       break;
     case 4:
-      nombreUsuario = prompt("Ingresa el nombre del contacto que deseas buscar");
+      nombreUsuario = prompt(
+        "Ingresa el nombre del contacto que deseas buscar"
+      );
       alert(agendaRoberto.buscarContacto(nombreUsuario));
       deseasContinuar();
       break;
     case 5:
-      nombreUsuario = prompt("Ingresa el nombre del contacto que deseas eliminar");
+      nombreUsuario = prompt(
+        "Ingresa el nombre del contacto que deseas eliminar"
+      );
       alert(agendaRoberto.eliminarContacto(nombreUsuario));
       deseasContinuar();
       break;
@@ -279,7 +261,9 @@ do {
       deseasContinuar();
       break;
     default:
-      alert(`La opción que ingresaste no es correcta. Asegúrate de ingresar solamente un número entre el 1 y el 7.`);
+      alert(
+        `La opción que ingresaste no es correcta. Asegúrate de ingresar solamente un número entre el 1 y el 7.`
+      );
       break;
   }
 } while (!terminar);
