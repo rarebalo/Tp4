@@ -11,45 +11,81 @@ Crear un objeto de tipo aeropuerto llamado "Aeropuerto Internacional",
 crear 3 objetos aviones con diferentes destinos. Agregar los 3 aviones al aeropuerto, 
 buscar un avión y usar el método abordar.*/
 
-
 class Aeropuerto {
-  constructor(nombreAeropuerto, listaAviones){
+  constructor(nombreAeropuerto, listaAviones) {
     this._nombreAeropuerto = nombreAeropuerto;
     this._listaAviones = listaAviones;
   }
-  set nombreAeropuerto(nombre){
+  set nombreAeropuerto(nombre) {
     this._nombreAeropuerto = nombre;
   }
-  get nombreAeropuerto(){
+  get nombreAeropuerto() {
     return this._nombreAeropuerto;
   }
 
-  set listaAviones(lista){
+  set listaAviones(lista) {
     this._listaAviones = lista;
   }
 
-  get listaAviones(){
+  get listaAviones() {
     return this._listaAviones;
   }
 
-  agregarAvion(avion){
+  agregarAvion(avion) {
     this._listaAviones.push(avion);
   }
 
-  buscarAvion(nombre){
+  buscarAvion(nombre) {
     let encontrado = false;
     for (let index = 0; index < this._listaAviones.length; index++) {
       if (this._listaAviones[index].nombre === nombre) {
         encontrado = true;
         //infomracion de avion encontrado
         break;
-      }      
+      }
     }
     if (encontrado) {
       //informacion del avion encontrado
     } else {
-      return let = "Avion no encontrado";
+      let mensaje = "Avion no encontrado"
+      return (mensaje);
     }
   }
 }
 
+class Avion {
+  constructor(nombre, capacidad, destino, listaPasajeros) {
+    this._nombre = nombre;
+    this._capacidad = capacidad;
+    this._destino = destino;
+    this._listaAviones = listaPasajeros;
+  }
+  set nombre(nombre){
+    this._nombre = nombre;
+  }
+  get nombre(){
+    return this._nombre;
+  }
+  set capacidad(capacidad){
+    this._capacidad = capacidad;
+  }
+  get capacidad(){
+    return this._capacidad;
+  }
+  set destino(destino){
+    this._destino = destino;
+  }
+  get destino(){
+    return this._destino;
+  }
+  abordar(pasajero){
+    let mensaje = "";
+    if (this._capacidad > this._listaAviones.length) {
+      this._listaAviones.push(pasajero);
+      return mensaje = "El paajero abordo.";
+    } else {
+      return mensaje = "El avion esta lleno, el pasajero no abordo."
+    }
+  }
+  
+}
