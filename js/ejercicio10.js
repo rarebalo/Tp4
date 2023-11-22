@@ -82,27 +82,43 @@ class Avion {
     let mensaje = "";
     if (this._capacidad > this._listaPasajeros.length) {
       this._listaPasajeros.push(pasajero);
-      return mensaje = "El paajero abordo.";
+      return (mensaje = "El paajero abordo.");
     } else {
       return (mensaje = "El avion esta lleno, el pasajero no abordo.");
     }
   }
 }
 
-let unAeropuerto = new Aeropuerto("Aeropuerto Internacional");
+let unAeropuerto = new Aeropuerto(
+  prompt(`vamos a crear el aeroperto, ingresa el nombre del aeropuerto: `)
+);
+let losAviones = [];
+let numeroDeAviones = parseInt(
+  prompt(`Ingresa la cantidad de aviones que vamos a crear:`)
+);
+for (let index = 0; index < numeroDeAviones; index++) {
+  losAviones.push(
+    new Avion(
+      prompt(
+        `Ahora vamos a crear el avion ${index + 1}, ingresa el nombre avion:`
+      ),
+      parseInt(prompt(`Ingresa la capacidad de pasajeros del avion.`)),
+      prompt(`Ingresa el destino del vuelo`)
+    )
+  );
+}
 
-let avionUno = new Avion("boing 747", 2, "chicligasta");
-let avionDos = new Avion("Avionetita", 2, "santiago del estero");
-let avionTres = new Avion("Aladelta", 1, "san javier");
-
-unAeropuerto.agregarAvion(avionUno);
-unAeropuerto.agregarAvion(avionDos);
-unAeropuerto.agregarAvion(avionTres);
+unAeropuerto.listaAviones = losAviones;
 
 unAeropuerto._listaAviones[0].abordar("randi");
 unAeropuerto._listaAviones[0].abordar("randi");
 
-
-alert(`mostrar los aviones del aeropuerto: ${unAeropuerto._listaAviones[0][0]}`);
-document.write(`muestro el nombre de un avion ${unAeropuerto.listaAviones[0]._nombre}`);
-document.write(`sube el pasajero randy ${unAeropuerto._listaAviones[0].abordar("randi")}`);
+alert(
+  `mostrar los aviones del aeropuerto: ${unAeropuerto._listaAviones[0][0]}`
+);
+document.write(
+  `muestro el nombre de un avion ${unAeropuerto.listaAviones[0].nombre}`
+);
+document.write(
+  `sube el pasajero randy ${unAeropuerto._listaAviones[0].abordar("randi")}`
+);
