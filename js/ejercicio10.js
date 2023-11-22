@@ -12,7 +12,7 @@ crear 3 objetos aviones con diferentes destinos. Agregar los 3 aviones al aeropu
 buscar un avión y usar el método abordar.*/
 
 class Aeropuerto {
-  constructor(nombreAeropuerto, listaAviones) {
+  constructor(nombreAeropuerto, listaAviones = []) {
     this._nombreAeropuerto = nombreAeropuerto;
     this._listaAviones = listaAviones;
   }
@@ -54,11 +54,11 @@ class Aeropuerto {
 }
 
 class Avion {
-  constructor(nombre, capacidad, destino, listaPasajeros) {
+  constructor(nombre, capacidad, destino, listaPasajeros = []) {
     this._nombre = nombre;
     this._capacidad = capacidad;
     this._destino = destino;
-    this._listaAviones = listaPasajeros;
+    this._listaPasajeros = listaPasajeros;
   }
   set nombre(nombre) {
     this._nombre = nombre;
@@ -80,11 +80,29 @@ class Avion {
   }
   abordar(pasajero) {
     let mensaje = "";
-    if (this._capacidad > this._listaAviones.length) {
-      this._listaAviones.push(pasajero);
-      return (mensaje = "El paajero abordo.");
+    if (this._capacidad > this._listaPasajeros.length) {
+      this._listaPasajeros.push(pasajero);
+      return mensaje = "El paajero abordo.";
     } else {
       return (mensaje = "El avion esta lleno, el pasajero no abordo.");
     }
   }
 }
+
+let unAeropuerto = new Aeropuerto("Aeropuerto Internacional");
+
+let avionUno = new Avion("boing 747", 2, "chicligasta");
+let avionDos = new Avion("Avionetita", 2, "santiago del estero");
+let avionTres = new Avion("Aladelta", 1, "san javier");
+
+unAeropuerto.agregarAvion(avionUno);
+unAeropuerto.agregarAvion(avionDos);
+unAeropuerto.agregarAvion(avionTres);
+
+unAeropuerto._listaAviones[0].abordar("randi");
+unAeropuerto._listaAviones[0].abordar("randi");
+
+
+alert(`mostrar los aviones del aeropuerto: ${unAeropuerto._listaAviones[0][0]}`);
+document.write(`muestro el nombre de un avion ${unAeropuerto.listaAviones[0]._nombre}`);
+document.write(`sube el pasajero randy ${unAeropuerto._listaAviones[0].abordar("randi")}`);
