@@ -47,8 +47,8 @@ class Aeropuerto {
     if (encontrado) {
       //informacion del avion encontrado
     } else {
-      let mensaje = "Avion no encontrado"
-      return (mensaje);
+      let mensaje = "Avion no encontrado";
+      return mensaje;
     }
   }
 }
@@ -60,32 +60,31 @@ class Avion {
     this._destino = destino;
     this._listaAviones = listaPasajeros;
   }
-  set nombre(nombre){
+  set nombre(nombre) {
     this._nombre = nombre;
   }
-  get nombre(){
+  get nombre() {
     return this._nombre;
   }
-  set capacidad(capacidad){
+  set capacidad(capacidad) {
     this._capacidad = capacidad;
   }
-  get capacidad(){
+  get capacidad() {
     return this._capacidad;
   }
-  set destino(destino){
+  set destino(destino) {
     this._destino = destino;
   }
-  get destino(){
+  get destino() {
     return this._destino;
   }
-  abordar(pasajero){
+  abordar(pasajero) {
     let mensaje = "";
     if (this._capacidad > this._listaAviones.length) {
       this._listaAviones.push(pasajero);
-      return mensaje = "El paajero abordo.";
+      return (mensaje = "El paajero abordo.");
     } else {
-      return mensaje = "El avion esta lleno, el pasajero no abordo."
+      return (mensaje = "El avion esta lleno, el pasajero no abordo.");
     }
   }
-  
 }
