@@ -5,25 +5,27 @@
     y llama a sus métodos "emitirSonido" para verificar que cada animal emite el sonido adecuado. */
 
 class Animal {
+  #nombre;
+  #edad;
   constructor(nombre, edad) {
-    this._nombre = nombre;
-    this._edad = edad;
+    this.#nombre = nombre;
+    this.#edad = edad;
   }
 
   set elNombre(nombre) {
-    this._nombre = nombre;
+    this.#nombre = nombre;
   }
 
   get elNombre() {
-    return this._nombre;
+    return this.#nombre;
   }
 
   set laEdad(edad) {
-    this._edad = edad;
+    this.#edad = edad;
   }
 
   get laEdad() {
-    return this._edad;
+    return this.#edad;
   }
 
   emitirSonido() {}
@@ -53,5 +55,5 @@ class Gato extends Animal {
 const primerPerro = new Perro("Manchitas", 5);
 const primerGato = new Gato("Magriete", 6);
 
-alert(`El gato ${primerGato._nombre} dice ${primerGato.emitirSonido()} \n
-El perro ${primerPerro._nombre} dice ${primerPerro.emitirSonido()} `);
+alert(`El gato ${primerGato.elNombre} dice ${primerGato.emitirSonido()} \n
+El perro ${primerPerro.elNombre} dice ${primerPerro.emitirSonido()} `);
