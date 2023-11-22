@@ -12,33 +12,35 @@ crear 3 objetos aviones con diferentes destinos. Agregar los 3 aviones al aeropu
 buscar un avión y usar el método abordar.*/
 
 class Aeropuerto {
+  #nombreAeropuerto
+  #listaAviones
   constructor(nombreAeropuerto, listaAviones = []) {
-    this._nombreAeropuerto = nombreAeropuerto;
-    this._listaAviones = listaAviones;
+    this.#nombreAeropuerto = nombreAeropuerto;
+    this.#listaAviones = listaAviones;
   }
   set nombreAeropuerto(nombre) {
-    this._nombreAeropuerto = nombre;
+    this.#nombreAeropuerto = nombre;
   }
   get nombreAeropuerto() {
-    return this._nombreAeropuerto;
+    return this.#nombreAeropuerto;
   }
 
   set listaAviones(lista) {
-    this._listaAviones = lista;
+    this.#listaAviones = lista;
   }
 
   get listaAviones() {
-    return this._listaAviones;
+    return this.#listaAviones;
   }
 
   agregarAvion(avion) {
-    this._listaAviones.push(avion);
+    this.#listaAviones.push(avion);
   }
 
   buscarAvion(nombre) {
     let encontrado = false;
-    for (let index = 0; index < this._listaAviones.length; index++) {
-      if (this._listaAviones[index].nombre === nombre) {
+    for (let index = 0; index < this.#listaAviones.length; index++) {
+      if (this.#listaAviones[index].nombre === nombre) {
         encontrado = true;
         //infomracion de avion encontrado
         break;
@@ -54,34 +56,39 @@ class Aeropuerto {
 }
 
 class Avion {
+  #nombre
+  #capacidad
+  #destino
+  #listaPasajeros 
+
   constructor(nombre, capacidad, destino, listaPasajeros = []) {
-    this._nombre = nombre;
-    this._capacidad = capacidad;
-    this._destino = destino;
-    this._listaPasajeros = listaPasajeros;
+    this.#nombre = nombre;
+    this.#capacidad = capacidad;
+    this.#destino = destino;
+    this.#listaPasajeros  = listaPasajeros;
   }
   set nombre(nombre) {
-    this._nombre = nombre;
+    this.#nombre = nombre;
   }
   get nombre() {
-    return this._nombre;
+    return this.#nombre;
   }
   set capacidad(capacidad) {
-    this._capacidad = capacidad;
+    this.#capacidad = capacidad;
   }
   get capacidad() {
-    return this._capacidad;
+    return this.#capacidad;
   }
   set destino(destino) {
-    this._destino = destino;
+    this.#destino = destino;
   }
   get destino() {
-    return this._destino;
+    return this.#destino;
   }
   abordar(pasajero) {
     let mensaje = "";
-    if (this._capacidad > this._listaPasajeros.length) {
-      this._listaPasajeros.push(pasajero);
+    if (this.#capacidad > this.#listaPasajeros .length) {
+      this.#listaPasajeros .push(pasajero);
       return (mensaje = "El paajero abordo.");
     } else {
       return (mensaje = "El avion esta lleno, el pasajero no abordo.");
@@ -110,15 +117,15 @@ for (let index = 0; index < numeroDeAviones; index++) {
 
 unAeropuerto.listaAviones = losAviones;
 
-unAeropuerto._listaAviones[0].abordar("randi");
-unAeropuerto._listaAviones[0].abordar("randi");
+unAeropuerto.listaAviones[0].abordar("randi");
+unAeropuerto.listaAviones[0].abordar("randi");
 
 alert(
-  `mostrar los aviones del aeropuerto: ${unAeropuerto._listaAviones[0][0]}`
+  `mostrar los aviones del aeropuerto: ${unAeropuerto.listaAviones[0][0]}`
 );
 document.write(
   `muestro el nombre de un avion ${unAeropuerto.listaAviones[0].nombre}`
 );
 document.write(
-  `sube el pasajero randy ${unAeropuerto._listaAviones[0].abordar("randi")}`
+  `sube el pasajero randy ${unAeropuerto.listaAviones[0].abordar("randi")}`
 );
