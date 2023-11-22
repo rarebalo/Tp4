@@ -4,48 +4,53 @@ con diferentes valores para sus propiedades y llama a sus métodos "saludar" y "
 */
 
 class Persona {
+  #nombre;
+  #edad;
+  #profesion;
+  #saludo;
+  #despedida;
   constructor(nombre, edad, profesion, saludo, despedida) {
-    this._nombre = nombre;
-    this._edad = edad;
-    this._profesion = profesion;
-    this._saludo = saludo;
-    this._despedida = despedida;
+    this.#nombre = nombre;
+    this.#edad = edad;
+    this.#profesion = profesion;
+    this.#saludo = saludo;
+    this.#despedida = despedida;
   }
 
-  set nombrePersona(elNombre) {
-    this._nombre = elNombre;
+  set nombre(elNombre) {
+    this.#nombre = elNombre;
   }
-  set edadPersona(laEdad) {
-    this._edad = laEdad;
+  set edad(laEdad) {
+    this.#edad = laEdad;
   }
-  set profesionPersona(laProfesion) {
-    this._profesion = laProfesion;
+  set profesion(laProfesion) {
+    this.#profesion = laProfesion;
   }
   set saludar(elSaludo) {
-    this._saludo = elSaludo;
+    this.#saludo = elSaludo;
   }
   set despedirse(laDespedida) {
-    this._despedida = laDespedida;
+    this.#despedida = laDespedida;
   }
 
-  get nombrePersona() {
-    return this._nombre;
+  get nombre() {
+    return this.#nombre;
   }
 
-  get edadPersona() {
-    return this._edad;
+  get edad() {
+    return this.#edad;
   }
 
-  get profesionPersona() {
-    return this._profesion;
+  get profesion() {
+    return this.#profesion;
   }
 
   get saludar() {
-    return this._saludo;
+    return this.#saludo;
   }
 
   get despedirse() {
-    return this._despedida;
+    return this.#despedida;
   }
 }
 function unNumAleatorio(topMin, topMax) {
@@ -220,11 +225,11 @@ for (let index = 0; index < lasPersonas.length; index++) {
   todosLosNombres =
     todosLosNombres +
     " " +
-    lasPersonas[index]._nombre +
+    lasPersonas[index].nombre +
     ": " +
-    lasPersonas[index]._edad +
+    lasPersonas[index].edad +
     " años de edad, y su profesion es: " +
-    lasPersonas[index]._profesion +
+    lasPersonas[index].profesion +
     "\n";
 }
 
@@ -234,16 +239,19 @@ alert(`Ahora van a interacturar de forma aleatoria...`);
 for (let index = 0; index < cantidadDePersonas / 2; index++) {
   let numUno = unNumAleatorio(0, lasPersonas.length - 1);
   let numDos = unNumAleatorio(0, lasPersonas.length - 1);
+  if (numUno === numDos) {
+    continue;
+  }
   alert(
     `Interaccio N°${index + 1}  de la ${momentoDelDia} es entre: \n ${
-      lasPersonas[numUno]._nombre
-    } y ${lasPersonas[numDos]._nombre} `
+      lasPersonas[numUno].nombre
+    } y ${lasPersonas[numDos].nombre} `
   );
   if (unNumAleatorio(0, 10) > 5) {
-    alert(`${lasPersonas[numUno]._nombre}: ${lasPersonas[numUno]._saludo} \n
-    ${lasPersonas[numDos]._nombre}: ${lasPersonas[numDos]._saludo}`);
+    alert(`${lasPersonas[numUno].nombre}: ${lasPersonas[numUno].saludar} \n
+    ${lasPersonas[numDos].nombre}: ${lasPersonas[numDos].saludar}`);
   } else {
-    alert(`${lasPersonas[numUno]._nombre}: ${lasPersonas[numUno]._despedida} \n
-    ${lasPersonas[numDos]._nombre}: ${lasPersonas[numDos]._despedida}`);
+    alert(`${lasPersonas[numUno].nombre}: ${lasPersonas[numUno].despedirse} \n
+    ${lasPersonas[numDos].nombre}: ${lasPersonas[numDos].despedirse}`);
   }
 }
