@@ -167,6 +167,7 @@ function deseasContinuar() {
     terminar = true;
   }
 }
+
 let nombresApellidos = [
   "Roberto García",
   "Carlos Fernández",
