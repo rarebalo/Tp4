@@ -38,6 +38,38 @@ class Persona {
     this.#edad = edad;
   }
 
+  get dni(){
+    return this.#dni;
+  }
+
+  set dni(elDni){
+    this.#dni = elDni;
+  }
+
+  get sexo(){
+    return this.#sexo;
+  }
+
+  set sexo(elSexo){
+    this.#sexo = elSexo;
+  }
+
+  get peso(){
+    return this.#peso;
+  }
+
+  set peso (elPeso){
+    this.#peso = elPeso;
+  }
+
+  get altura(){
+    return this.#altura;
+  }
+
+  set altura (laAltura){
+    this.#altura = laAltura;
+  }
+
   mostrarGeneracion() {
     if (this.anioNac >= 1993 && this.anioNac <= 2011) {
       document.write(
