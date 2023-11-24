@@ -25,6 +25,10 @@ class cuenta {
         return this.#titular;
     }
 
+    set titular(elTitular) {
+        this.#titular = elTitular;
+    }
+
     ingresar(monto) {
         if (monto > 0) {
             this.#saldo = this.#saldo + monto;
