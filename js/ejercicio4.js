@@ -7,10 +7,31 @@ Por último, utilice el método imprime datos
 para mostrar por pantalla los valores de los tres objetos instanciados.*/
 
 class Producto {
+    #codigo
+    #nombre
+    #precio
     constructor(codigo, nombre, precio){
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.precio = precio;
+        this.#codigo = codigo;
+        this.#nombre = nombre;
+        this.#precio = precio;
+    }
+    get codigo(){
+        return this.#codigo;
+    }
+    set codigo(elcodigo){
+        this.#codigo = elcodigo;
+    }
+    get nombre(){
+        return this.#nombre;
+    }
+    set nombre(elNombre){
+        this.#nombre = elNombre;
+    }
+    get precio(){
+        return this.#precio;
+    }
+    set precio(elPrecio){
+        this.#precio = elPrecio;
     }
 
     imprimeDatos(){
