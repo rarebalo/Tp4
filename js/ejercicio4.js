@@ -35,9 +35,9 @@ class Producto {
     }
 
     imprimeDatos(){
-        document.write(`codigo: ${this.codigo}<br>`);
-        document.write(`nombre: ${this.nombre}<br>`);
-        document.write(`precio: ${this.precio}<br>`);
+        document.write(`codigo: ${this.#codigo}<br>`);
+        document.write(`nombre: ${this.#nombre}<br>`);
+        document.write(`precio: ${this.#precio}<br>`);
     }
 
 }
