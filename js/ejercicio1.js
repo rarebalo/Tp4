@@ -35,3 +35,38 @@ document.write(`${auto.encendido}<br>`);
 auto.encender();
 
 document.write(auto.encendido);
+
+class Auto{
+  #color;
+  #marca;
+  #modelo;
+  #encendido;
+  constructor(color, marca, modelo, encendido=false){
+    this.#color = color;
+    this.#marca = marca;
+    this.#modelo = modelo;
+    this.#encendido = encendido;
+  }
+  get color(){
+    return this.#color;
+  }
+  set color(elColor){
+    this.#color = elColor;
+  }
+
+  get marca (){
+    return this.#marca;
+  }
+
+  set marca(laMarca){
+    this.#marca = laMarca;
+  }
+
+  get modelo(){
+    return this.#modelo;
+  }
+
+  set modelo(elModelo){
+    this.#modelo = elModelo;
+  }
+}

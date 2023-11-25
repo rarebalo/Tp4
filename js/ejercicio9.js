@@ -34,7 +34,7 @@ class Perro extends Animal {
     super(nombre, edad);
   }
 
-  emitirSonido() {
+  emitirSonido() {,
     const elSonido = "guau guau";
     return elSonido;
   }
