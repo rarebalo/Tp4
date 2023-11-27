@@ -11,30 +11,6 @@ auto encendido
 El auto se apagó
 */
 
-const auto = {
-  color: "rojo",
-  marca: "ferrari",
-  modelo: "74",
-  encendido: false,
-
-  encender: function () {
-    this.encendido = true;
-
-    document.write(
-      "Tu nave acaba de despertar y en 5 minutos (después de calentar) estará lista para devorar el asfalto. (auto encendido) <br>"
-    );
-  },
-  apadar: function () {
-    this.encendido = false;
-    document.write("Tu nave se ha ido a descansar. (el auto se apagó) <br>");
-  },
-};
-
-document.write(`${auto.encendido}<br>`);
-
-auto.encender();
-
-document.write(auto.encendido);
 
 class Auto{
   #color;
@@ -69,4 +45,21 @@ class Auto{
   set modelo(elModelo){
     this.#modelo = elModelo;
   }
+
+  encender(estado){
+    this.#encendido = estado;
+    if (this.#encendido) {
+      document.write(
+        "Tu nave acaba de despertar y en 5 minutos (después de calentar) estará lista para devorar el asfalto. (auto encendido) <br>"
+      );
+    } else {
+      document.write("Tu nave se ha ido a descansar. (el auto se apagó) <br>");
+    }
+  }
+
 }
+
+let unAuto = new Auto("verde","cehvrolet","onix",false)
+
+unAuto.encender(true);
+unAuto.encender(false);
