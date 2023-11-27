@@ -4,32 +4,34 @@ modificar y mostrar sus propiedades, calcular el perímetro y el área
 */
 
 class Rectangulo {
+  #alto;
+  #ancho;
   constructor(alto, ancho) {
-    this._alto = alto;
-    this._ancho = ancho;
+    this.#alto = alto;
+    this.#ancho = ancho;
   }
 
   get alto() {
-    return this._alto;
+    return this.#alto;
   }
 
   get ancho() {
-    return this._ancho;
+    return this.#ancho;
   }
 
   get perimetro() {
-    const perimetro = (this._alto + this._ancho) * 2;
+    const perimetro = (this.#ancho + this.#alto) * 2;
     return perimetro;
   }
 
   get area() {
-    const area = this._alto * this._ancho;
+    const area = this.#ancho * this.#alto;
     return area;
   }
 
   set alto(altura) {
     if (altura > 0) {
-      this._alto = altura;
+      this.#ancho = altura;
     } else {
       document.write("La altura debe ser mayor a 0.<br>");
     }
@@ -37,7 +39,7 @@ class Rectangulo {
 
   set ancho(ancho) {
     if (ancho > 0) {
-      this._ancho = ancho;
+      this.#ancho = ancho;
     } else {
       document.write("El ancho debe ser mayor a 0.<br>");
     }
@@ -54,6 +56,6 @@ document.write(`Perímetro del rectángulo: ${nuevoRectangulo.perimetro}<br>`);
 nuevoRectangulo.alto = 3;
 nuevoRectangulo.ancho = 7;
 nuevoRectangulo.alto = 0;
-escr(nuevoRectangulo._alto);
-escr(nuevoRectangulo._ancho);
+escr(nuevoRectangulo.alto);
+escr(nuevoRectangulo.ancho);
   

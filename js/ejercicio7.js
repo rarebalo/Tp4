@@ -22,44 +22,41 @@ Crea un menú con opciones que serán seleccionadas por el usuario usando un pro
  las salidas de las operaciones seleccionadas por el usuario se pueden mostrar en pantalla y  por consola.
 */
 class Agenda {
-  constructor() {
-    this._cantidadDeContactos = 10;
-    this.contactos = [];
+  #cantidadDeContactos;
+  #contactos;
+  constructor(cantidadDeContactos = 10, contactos = []) {
+    this.#cantidadDeContactos = cantidadDeContactos;
+    this.#contactos = contactos;
   }
 
-  set anadirContacto(contacto) {
-    if (this._cantidadDeContactos > this.cantidadDeContactos) {
-      this.contactos.push(contacto);
+  set cantidadDeContactos(cantidad) {
+    this.#cantidadDeContactos = cantidad;
+  }
+
+  get cantidadDeContactos() {
+    return this.#cantidadDeContactos;
+  }
+
+  anadirContacto(contacto) {
+    if (this.#cantidadDeContactos > this.#contactos.length) {
+      this.#contactos.push(contacto);
       alert(
         `"${
-          this.contactos[this.contactos.length - 1][0]
-        }" fue añadido a tu agenda con exito!`
-      );
+          this.#contactos[this.#contactos.length - 1][0]
+        }" fue añadido con exito!`
+      ); //a esto lo tengo que cambiar por un valor return
     } else {
-      alert(
-        `Su agenda esta llena no se pudo agregar a ${
-          this.contactos[this.contactos.length - 1][0]
-        }`
-      );
+      alert(`Su agenda esta llena no se puedo agregar a "${contacto}"`); //a esto lo tengo que cambiar por un valor return
     }
-  }
-  set cantidadDeContactos(cantidad) {
-    this._cantidadDeContactos = cantidad;
-  }
-  get cantidadDeContactos() {
-    let cantidadDeContactos = this.contactos.filter(
-      (contacto) => contacto !== undefined
-    ).length;
-    return cantidadDeContactos;
   }
 
   existeContacto(consulta) {
     let repetido = false;
     const estadoConsulta = [];
-    for (let index = 0; index < this.contactos.length; index++) {
-      if (this.contactos[index][0] == consulta) {
+    for (let index = 0; index < this.#contactos.length; index++) {
+      if (this.#contactos[index][0] == consulta) {
         estadoConsulta.push(
-          `El contacto "${consulta}" existe en la posicion n° ${index + 1}.`
+          `El contacto "${consulta}" existe en la posicion n° ${index + 1}.` //esto tiene que devolver un dato
         );
         estadoConsulta.push(index);
         repetido = true;
@@ -69,19 +66,19 @@ class Agenda {
     if (repetido) {
       return estadoConsulta[0];
     } else {
-      estadoConsulta.push(`El contacto "${consulta}" no existe en su agenda.`);
+      estadoConsulta.push(`El contacto "${consulta}" no existe en su agenda.`); // esto tiene que devolver un dato
       return estadoConsulta[0];
     }
   }
 
   listarContactos() {
     let listaDeContactos = "";
-    for (let index = 0; index < this.contactos.length; index++) {
+    for (let index = 0; index < this.#contactos.length; index++) {
       listaDeContactos =
         listaDeContactos +
-        this.contactos[index][0] +
+        this.#contactos[index][0] +
         " " +
-        this.contactos[index][1] +
+        this.#contactos[index][1] +
         "\n";
     }
     if (listaDeContactos === "") {
@@ -92,9 +89,11 @@ class Agenda {
   }
   buscarContacto(nombre) {
     let mensaje = "";
-    for (let index = 0; index < this.contactos.length; index++) {
-      if (this.contactos[index][0] === nombre) {
-        mensaje = `El numero telefonico de "${nombre}" es: ${this.contactos[index][1]}`;
+    for (let index = 0; index < this.#contactos.length; index++) {
+      if (this.#contactos[index][0] === nombre) {
+        mensaje = `El numero telefonico de "${nombre}" es: ${
+          this.#contactos[index][1]
+        }`;
         break;
       }
     }
@@ -107,10 +106,10 @@ class Agenda {
   }
   eliminarContacto(contacto) {
     let mensaje = "";
-    for (let index = 0; index < this.contactos.length; index++) {
-      if (this.contactos[index][0] === contacto) {
+    for (let index = 0; index < this.#contactos.length; index++) {
+      if (this.#contactos[index][0] === contacto) {
         mensaje = `El contacto "${contacto}" fue eliminado de tu agenda.`;
-        this.contactos.splice(index, 1);
+        this.#contactos.splice(index, 1);
         break;
       }
     }
@@ -123,9 +122,9 @@ class Agenda {
   }
   agendaLlena() {
     let mensaje = "";
-    if (this._cantidadDeContactos > this.cantidadDeContactos) {
+    if (this.#cantidadDeContactos > this.#contactos.length) {
       mensaje = `Su agenda aun tiene ${
-        this._cantidadDeContactos - this.cantidadDeContactos
+        this.#cantidadDeContactos - this.#contactos.length
       } lugares disponibles.`;
     } else {
       mensaje = `Su agenda esta llena.`;
@@ -134,9 +133,9 @@ class Agenda {
   }
   huecosLibres() {
     let mensaje = "";
-    if (this._cantidadDeContactos > this.cantidadDeContactos) {
+    if (this.#cantidadDeContactos > this.#contactos.length) {
       mensaje = `Su agenda aun tiene ${
-        this._cantidadDeContactos - this.cantidadDeContactos
+        this.#cantidadDeContactos - this.#contactos.length
       } huecos disponibles.`;
     } else {
       mensaje = `Su agenda esta llena.`;
@@ -167,6 +166,7 @@ function deseasContinuar() {
     terminar = true;
   }
 }
+
 let nombresApellidos = [
   "Roberto García",
   "Carlos Fernández",
@@ -224,7 +224,7 @@ do {
       numeroUsuario = parseInt(
         prompt(`Ingresa el numero de telefono de ${nombreUsuario}`)
       );
-      agendaRoberto.anadirContacto = [nombreUsuario, numeroUsuario];
+      agendaRoberto.anadirContacto([nombreUsuario, numeroUsuario]);
       deseasContinuar();
       break;
     case 2:

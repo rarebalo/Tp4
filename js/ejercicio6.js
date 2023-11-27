@@ -14,44 +14,48 @@ Por último, indicar cuál de los 2 objetos “libros” tiene más páginas.
 */
 
 class Libro {
-  constructor() {
-    this._titulo = '';
-    this._isbn = '';
-    this._autor = '';
-    this._numPaginas = 0;
+  #titulo;
+  #isbn;
+  #autor;
+  #numPaginas;
+  constructor(titulo="",isbn="",autor="",numPaginas=0) {
+    this.#titulo = titulo;
+    this.#isbn = isbn;
+    this.#autor = autor;
+    this.#numPaginas = numPaginas;
   }
 
   get titulo() {
-    return this._titulo;
+    return this.#titulo;
   }
   get isbn() {
-    return this._isbn;
+    return this.#isbn;
   }
   get autor() {
-    return this._autor;
+    return this.#autor;
   }
   get numPaginas() {
-    return this._numPaginas;
+    return this.#numPaginas;
   }
 
   set titulo(newTitulo) {      
     newTitulo = (newTitulo.toString()).toLowerCase();
-    this._titulo = newTitulo.charAt(0).toUpperCase() + newTitulo.slice(1);
+    this.#titulo = newTitulo.charAt(0).toUpperCase() + newTitulo.slice(1);
   }
   set isbn(newIsbn) {
-    this._isbn = newIsbn;
+    this.#isbn = newIsbn;
   }
   set autor(newAutor) {
     newAutor = newAutor.toLowerCase();
-    this._autor = newAutor.charAt(0).toUpperCase() + newAutor.slice(1);
+    this.#autor = newAutor.charAt(0).toUpperCase() + newAutor.slice(1);
   }
   set numPaginas(NewNumPaginas) {
-    this._numPaginas = parseInt(NewNumPaginas);
+    this.#numPaginas = parseInt(NewNumPaginas);
   }
 
   mostrarLibro() {
     document.write(
-      `El libro ${this.titulo} con ISBN ${this.isbn} creado por el autor ${this.autor} tiene páginas ${this.numPaginas} <br><br>`
+      `El libro ${ this.#titulo} con ISBN ${this.#isbn} creado por el autor ${this.#autor} tiene páginas ${this.#numPaginas} <br><br>`
     );
   }
 }
